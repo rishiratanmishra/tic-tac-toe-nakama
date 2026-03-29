@@ -24,7 +24,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Nakama / Docker Data
-backend/data/
+backend/data/*
+!backend/data/local.yml
+!backend/data/modules/
 
 # IDE files
 .vscode/

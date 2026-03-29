@@ -1,0 +1,13 @@
+name: nakama-node-1
+database:
+  address:
+    - postgres:localdb@postgres:5432/nakama
+logger:
+  level: "DEBUG"
+session:
+  encryption_key: "default-encryption-key"
+runtime:
+  http_key: "default-http-key"
+  path: "/nakama/data/modules"
+  env:
+    - "DEBUG=true"
