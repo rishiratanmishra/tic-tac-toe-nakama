@@ -36,5 +36,8 @@ backend/data/
 .DS_Store
 Thumbs.db
 
+# Azure secrets
+*.PublishSettings
+
 help.md
 lila-assignment.pdf

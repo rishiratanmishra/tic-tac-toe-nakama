@@ -2,11 +2,11 @@ name: Deploy Frontend to Azure Static Web Apps
 
 on:
   workflow_dispatch:
-#  push:
-#    branches: [ "main" ]
-#    paths:
-#      - 'frontend/**'
-#      - '.github/workflows/deploy-frontend.yml'
+    inputs:
+      reason:
+        description: 'Reason for manual deploy'
+        required: false
+        default: 'Manual trigger'
 
 jobs:
   build-and-deploy:
