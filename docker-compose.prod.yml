@@ -1,37 +1,13 @@
 version: "3"
-
 services:
-  postgres:
-    image: postgres:12.2-alpine
-    restart: always
-    environment:
-      POSTGRES_DB: nakama
-      POSTGRES_PASSWORD: localdb
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
   nakama:
     image: docker.io/rishiratanmishra1/nakama-tictactoe:latest
     restart: always
-    depends_on:
-      - postgres
-    ports:
-      - "7350:7350"
-      - "7349:7349"
     environment:
-      NAKAMA_DATABASE_ADDRESS: postgres:localdb@postgres:5432/nakama
+      # Use the new Managed Azure PostgreSQL connection string
+      NAKAMA_DATABASE_ADDRESS: "dbadmin:Nakama_Db_2026!@nakama-db-tictactoe.postgres.database.azure.com:5432/nakama?sslmode=require"
       NAKAMA_NETWORK_ALLOWED_ORIGINS: "*"
+    # Single-line startup: Migrate once, then start server
     command: >
-      sh -c "
-      echo 'Waiting for Postgres...' &&
-      until nc -z postgres 5432; do sleep 2; done &&
-
-      echo 'Running migrations...' &&
-      /nakama/nakama migrate up --database.address postgres:localdb@postgres:5432/nakama &&
-
-      echo 'Starting Nakama...' &&
-      exec /nakama/nakama --database.address postgres:localdb@postgres:5432/nakama
-      "
-
-volumes:
-  postgres_data:
+      sh -c "/nakama/nakama migrate up --database.address dbadmin:Nakama_Db_2026!@nakama-db-tictactoe.postgres.database.azure.com:5432/nakama?sslmode=require && 
+             /nakama/nakama --database.address dbadmin:Nakama_Db_2026!@nakama-db-tictactoe.postgres.database.azure.com:5432/nakama?sslmode=require --network.allowed_origins '*'"
