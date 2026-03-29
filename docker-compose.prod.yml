@@ -1,16 +1,23 @@
-version: '3'
+version: "3"
+
 services:
   postgres:
     image: postgres:12.2-alpine
+    restart: always
     environment:
       POSTGRES_DB: nakama
       POSTGRES_PASSWORD: localdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   nakama:
     image: docker.io/rishiratanmishra1/nakama-tictactoe:latest
     restart: always
     depends_on:
       - postgres
+    ports:
+      - "7350:7350"
+      - "7349:7349"
     environment:
       NAKAMA_DATABASE_ADDRESS: postgres:localdb@postgres:5432/nakama
       NAKAMA_NETWORK_ALLOWED_ORIGINS: "*"
@@ -23,5 +30,8 @@ services:
       /nakama/nakama migrate up --database.address postgres:localdb@postgres:5432/nakama &&
 
       echo 'Starting Nakama...' &&
-      exec /nakama/nakama --config /nakama/data/local.yml --database.address postgres:localdb@postgres:5432/nakama
+      exec /nakama/nakama --database.address postgres:localdb@postgres:5432/nakama
       "
+
+volumes:
+  postgres_data:
