@@ -79,13 +79,20 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## ☁️ Deployment Strategy (Azure)
-
-This project is designed for cloud scalability:
-
-- **Backend**: Containerized and ready for **Azure Container Apps** or **AKS**.
-- **Database**: Managed **Azure Database for PostgreSQL**.
+- **Backend**: Containerized and deployed to **Azure App Service (Web App for Containers)** using Docker Compose.
+- **Database**: **PostgreSQL** running as a containerized service alongside Nakama.
 - **Frontend**: High-speed delivery via **Azure Static Web Apps**.
+- **CI/CD**: Automated via **GitHub Actions** with Docker Hub integration.
+
+---
+
+## 🌍 Live Deployment URLs
+
+| Service          | URL                                      |
+| ---------------- | ---------------------------------------- |
+| **Live Game**    | [https://victorious-wave-0a1c9e20f.6.azurestaticapps.net/](https://victorious-wave-0a1c9e20f.6.azurestaticapps.net/) |
+| **Backend API**  | `https://nakama-backend-tictactoe-grb9cxgzhzgpg3bt.centralus-01.azurewebsites.net` |
+| **Source Code**  | [https://github.com/rishiratanmishra/tic-tac-toe-nakama](https://github.com/rishiratanmishra/tic-tac-toe-nakama) |
 
 ---
 
