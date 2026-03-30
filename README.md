@@ -21,7 +21,7 @@ A high-performance, real-time multiplayer Tic-Tac-Toe application built for the 
 - **Backend**: [Nakama Runtime](https://heroiclabs.com/docs/nakama/server-framework/introduction/) (TypeScript)
 - **Database**: [PostgreSQL](https://www.postgresql.org/)
 - **Infrastructure**: [Docker Compose](https://docs.docker.com/compose/)
-- **Hosting (Planned)**: [Azure Container Apps](https://azure.microsoft.com/en-us/products/container-apps/) & [Azure Static Web Apps](https://azure.microsoft.com/en-us/products/static-web-apps/)
+- **Hosting (Planned)**: [AWS EC2](https://aws.amazon.com/ec2/) & [AWS Amplify](https://aws.amazon.com/amplify/)
 
 ---
 
@@ -79,20 +79,13 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-- **Backend**: Containerized and deployed to **Azure App Service (Web App for Containers)** using Docker Compose.
-- **Database**: **PostgreSQL** running as a containerized service alongside Nakama.
-- **Frontend**: High-speed delivery via **Azure Static Web Apps**.
-- **CI/CD**: Automated via **GitHub Actions** with Docker Hub integration.
+## ☁️ Deployment Strategy (AWS)
 
----
+This project is designed for cloud scalability:
 
-## 🌍 Live Deployment URLs
-
-| Service          | URL                                      |
-| ---------------- | ---------------------------------------- |
-| **Live Game**    | [https://victorious-wave-0a1c9e20f.6.azurestaticapps.net/](https://victorious-wave-0a1c9e20f.6.azurestaticapps.net/) |
-| **Backend API**  | `https://nakama-backend-tictactoe-grb9cxgzhzgpg3bt.centralus-01.azurewebsites.net` |
-| **Source Code**  | [https://github.com/rishiratanmishra/tic-tac-toe-nakama](https://github.com/rishiratanmishra/tic-tac-toe-nakama) |
+- **Backend**: Containerized and deployed on **AWS EC2** using Docker.
+- **Database**: Managed **AWS EC2**.
+- **Frontend**: High-speed delivery via **AWS EC2** .
 
 ---
 
